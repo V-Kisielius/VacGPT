@@ -31,8 +31,8 @@ jobs:
             rm -f .env
             touch .env
 
-            echo OPENAI_TOKEN=${{ secrets.OPENAI_TOKEN }} >> .env
             echo TG_TOKEN=${{ secrets.TG_TOKEN }} >> .env
+            echo OPENAI_TOKEN=${{ secrets.OPENAI_TOKEN }} >> .env
             echo SECRET_WORD=${{ secrets.SECRET_WORD }} >> .env
             echo ADMINS=${{ secrets.ADMINS }} >> .env
 

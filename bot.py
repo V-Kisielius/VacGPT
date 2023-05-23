@@ -1,7 +1,7 @@
+import os
 import asyncio
 from aiogram import Bot, Dispatcher
 from handlers import user_handler
-import os
 from dotenv import load_dotenv
 load_dotenv()
 
