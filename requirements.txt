@@ -1,0 +1,4 @@
+openai
+aiogram
+psycopg2-binary
+python-dotenv

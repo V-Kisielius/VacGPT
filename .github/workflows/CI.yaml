@@ -1,0 +1,40 @@
+name: START ON GITHUB
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: github.repository == 'V-Kisielius/VacGPT'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH Key
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+      - name: Deploy code
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: root
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            pkill screen
+            cd VacGPT
+            git pull origin main
+
+            rm -f .env
+            touch .env
+
+            echo OPENAI_TOKEN=${{ secrets.OPENAI_TOKEN }} >> .env
+            echo TG_TOKEN=${{ secrets.TG_TOKEN }} >> .env
+            echo SECRET_WORD=${{ secrets.SECRET_WORD }} >> .env
+            echo ADMINS=${{ secrets.ADMINS }} >> .env
+
+            pip install -r requirements.txt
+            screen -dm python3 bot.py &
