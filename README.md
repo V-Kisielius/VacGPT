@@ -32,3 +32,7 @@ This chatbot supports the following commands:
 If you encounter any issues or bugs while using this chatbot, please open an issue here on Github.
 
 If you'd like to contribute to this project, feel free to fork this repository and submit a pull request. We welcome any and all contributions!
+
+## Fun fact: *this readme file was created by a bot!*
+
+If you're interested in trying out the bot yourself, you can find it here: [@supervac_bot](https://t.me/supervac_bot).
